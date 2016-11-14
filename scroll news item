@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<head>
+<title>逐行新闻滚动效果scroll news</title>
+	 <style type="text/css">
+		 a{
+			 display:block;
+		     font-size:12px;
+			 line-height:18px;
+		     text-decoration:none;
+			 color:#333;
+		     font-family:Arial;
+		 }
+         .shell{
+			 width:200px;
+			 padding:5px;
+			 border:1px solid;
+		 }
+         #div1{
+			 height:72px;
+			 overflow:hidden;
+		 }
+     </style>
+</head>
+<body>
+	 <div class="shell">
+	     <div id="div1">
+			 <a href="">请教高手看下代码&gt&gt</a>
+			 <a href="">在UTF-8编辑显示&gt&gt</a>
+			 <a href="">做的一个滑动效果&gt&gt</a>
+			 <a href="">QQ按钮渐显渐隐&gt&gt</a>
+			 <a href="">Js读取Json数据&gt&gt</a>
+			 <a href="">奇怪的PNG文件&gt&gt</a>
+			 <a href="">更新弹出窗口组件&gt&gt</a>
+         </div>
+     </div>
+	 <script language="javascript">
+		 var box=document.getElementById("div1"),can=true;
+		 box.innerHTML+=box.innerHTML;
+		 box.onmouseover=function(){can=false};
+		 box.onmouseout=function(){can=true};
+		 new function (){
+			 var stop=box.scrollTop%18==0&&!can;//18为步长
+			 if(!stop)box.scrollTop==parseInt(box.scrollHeight/2)?box.scrollTop=0:box.scrollTop++;
+			 setTimeout(arguments.callee,box.scrollTop%18?10:1500);//18为步长
+	    	};
+     </script>
+</body>
+</html>
